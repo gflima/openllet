@@ -26,10 +26,10 @@
     <module>module-modularity</module>
     <module>tools-pellint</module>
     <module>tools-cli</module>
-    <module>tools-profiler</module>
-    <module>examples</module>
-    <module>tests</module>
-    <module>plugin-protege</module>
+    <!-- <module>tools-profiler</module> -->
+    <!-- <module>examples</module> -->
+    <!-- <module>tests</module> -->
+    <!-- <module>plugin-protege</module> -->
     <module>distribution</module>
   </modules>
 
@@ -75,17 +75,32 @@
       <maven>3.5.2</maven>
   </prerequisites>
 
+  <repositories>
+    <repository>
+      <id>apache-repo-snapshots</id>
+      <url>https://repository.apache.org/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.apache.jena</groupId>
         <artifactId>jena-core</artifactId>
-        <version>[3.15.0,3.15.99]</version>
+        <!-- <version>[3.15.0,3.15.99]</version> -->
+        <version>3.18.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.apache.jena</groupId>
         <artifactId>jena-arq</artifactId>
-        <version>[3.15.0,3.15.99]</version>
+        <!-- <version>[3.15.0,3.15.99]</version> -->
+        <version>3.18.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>net.sourceforge.owlapi</groupId>
@@ -211,39 +226,39 @@
 
   		<plugins>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.4.1</version> <!-- 3.0.0-M1 -->
-				<executions>
-					<execution>
-						<id>enforce</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireJavaVersion><!-- Check Java version -->
-                                    <version>[10,15)</version>
-								</requireJavaVersion>
+			<!-- <plugin> -->
+			<!-- 	<groupId>org.apache.maven.plugins</groupId> -->
+			<!-- 	<artifactId>maven-enforcer-plugin</artifactId> -->
+            <!--     <version>1.4.1</version> <!-\- 3.0.0-M1 -\-> -->
+			<!-- 	<executions> -->
+			<!-- 		<execution> -->
+			<!-- 			<id>enforce</id> -->
+			<!-- 			<goals> -->
+			<!-- 				<goal>enforce</goal> -->
+			<!-- 			</goals> -->
+			<!-- 			<configuration> -->
+			<!-- 				<rules> -->
+			<!-- 					<requireJavaVersion><!-\- Check Java version -\-> -->
+            <!--                         <version>[10,15)</version> -->
+			<!-- 					</requireJavaVersion> -->
 
-								<requireReleaseDeps><!-- Ensure that release module does not depend on any snapshot module -->
-									<onlyWhenRelease>true</onlyWhenRelease>
-									<message>Snapshots are not allowed for final versions !</message>
-								</requireReleaseDeps>
+			<!-- 					<requireReleaseDeps><!-\- Ensure that release module does not depend on any snapshot module -\-> -->
+			<!-- 						<onlyWhenRelease>true</onlyWhenRelease> -->
+			<!-- 						<message>Snapshots are not allowed for final versions !</message> -->
+			<!-- 					</requireReleaseDeps> -->
 
-								<bannedDependencies>
-									<excludes>
-										<exclude>com.sun.xml.bind</exclude> Ban legacy JAXB implementation
-										<exclude>commons-logging:commons-logging</exclude> Ban commons logging
-									</excludes>
-								</bannedDependencies>
-								<!-- <dependencyConvergence /> Ensure that there are no dependency conflict -->
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- 					<bannedDependencies> -->
+			<!-- 						<excludes> -->
+			<!-- 							<exclude>com.sun.xml.bind</exclude> Ban legacy JAXB implementation -->
+			<!-- 							<exclude>commons-logging:commons-logging</exclude> Ban commons logging -->
+			<!-- 						</excludes> -->
+			<!-- 					</bannedDependencies> -->
+			<!-- 					<!-\- <dependencyConvergence /> Ensure that there are no dependency conflict -\-> -->
+			<!-- 				</rules> -->
+			<!-- 			</configuration> -->
+			<!-- 		</execution> -->
+			<!-- 	</executions> -->
+			<!-- </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
