@@ -75,18 +75,18 @@
       <maven>3.5.2</maven>
   </prerequisites>
 
-  <repositories>
-    <repository>
-      <id>apache-repo-snapshots</id>
-      <url>https://repository.apache.org/content/repositories/snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  <!-- <repositories> -->
+  <!--   <repository> -->
+  <!--     <id>apache-repo-snapshots</id> -->
+  <!--     <url>https://repository.apache.org/content/repositories/snapshots/</url> -->
+  <!--     <releases> -->
+  <!--       <enabled>false</enabled> -->
+  <!--     </releases> -->
+  <!--     <snapshots> -->
+  <!--       <enabled>true</enabled> -->
+  <!--     </snapshots> -->
+  <!--   </repository> -->
+  <!-- </repositories> -->
 
   <dependencyManagement>
     <dependencies>
